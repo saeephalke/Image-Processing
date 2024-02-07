@@ -1,4 +1,4 @@
-
+import images.*;
 public class Processing {
 private APImage image;
 
@@ -15,7 +15,7 @@ public Processing(String s) {
 * Can use any image
 */
 //Convert an image to BW (Christina)
-public convertBW () {
+public void convertBW() {
   image.draw();
   for (Pixel little : image) {
     //take the average of the colors
@@ -41,7 +41,7 @@ public convertBW () {
 /*
 * Convert image to grayscale (Christina)
 */
-public convertGray () {
+public void convertGray() {
   for (Pixel p : image) {
     int average = (p.getRed() + p.getBlue() + p.getGreen())/3;
     p.setRed(average);
@@ -51,7 +51,8 @@ public convertGray () {
 }
   
 //Convert image to luminance grayscale (Christina)
-public lumGray () {
+public void lumGray() {
+	//an image is not an array of pixels, you can't traverse it like this
   for (Pixel p : image) {
     int average = (p.getRed() * 0.299 + p.getBlue() * .114 + p.getGreen() * .587);
     p.setRed(average);
@@ -60,11 +61,12 @@ public lumGray () {
   }
 }
   
-* Rotate left 90, right 90, 180 (Isha)
+/* Rotate left 90, right 90, 180 (Isha)
 * Convert to sepia (Isha)
 * Darken/brighten image (Felicia)
+*/
 //Do color filtering (Christina)
-public colorFilter (int red, int green, int blue) {
+public void colorFilter (int red, int green, int blue) {
   for (Pixel p : image) {
     if (p.getRed() + red > 255) {
       p.setRed(255);
@@ -100,7 +102,7 @@ public colorFilter (int red, int green, int blue) {
 }
 
   
-* Posterize image  (Saee)
+/* Posterize image  (Saee)
 * Convert to photographic negative (Saee)
 * Sharpen (Saee)
 * Blur (Saee)
