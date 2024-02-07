@@ -67,38 +67,42 @@ public void lumGray() {
 */
 //Do color filtering (Christina)
 public void colorFilter (int red, int green, int blue) {
-  for (Pixel p : image) {
-    if (p.getRed() + red > 255) {
-      p.setRed(255);
-    }
-    else if (p.getRed() + red < 0) {
-      p.setRed(0);
-    }
-    else {
-      p.setRed(p.getRed + red);
-    }
-    if (p.getGreen() + green > 255) {
-      p.setGreen(255);
-    }
-    else if (p.getGreen() + green < 0) {
-      p.setGreen(0);
-    }
-    else {
-      p.setGreen(p.getGreen + green);
-    }
-    
-    if (p.getBlue() + blue > 255) {
-      p.setBlue(255);
-    }
-    else if (p.getBlue() + blue < 0) {
-      p.setBlue(0);
-    }
-    else {
-      p.setBlue(p.getBlue + blue);
-    }
-    
-    
-  }
+	int width = image.getWidth();
+	int height = image.getHeight();
+	
+	for(int w = 0; w <  width; w++) {
+		for(int h = 0; h < height; h++) {
+			Pixel p = image.getPixel(w, h);
+			if (p.getRed() + red > 255) {
+			      p.setRed(255);
+			    }
+			    else if (p.getRed() + red < 0) {
+			      p.setRed(0);
+			    }
+			    else {
+			      p.setRed(p.getRed() + red);
+			    }
+			    if (p.getGreen() + green > 255) {
+			      p.setGreen(255);
+			    }
+			    else if (p.getGreen() + green < 0) {
+			      p.setGreen(0);
+			    }
+			    else {
+			      p.setGreen(p.getGreen() + green);
+			    }
+			    
+			    if (p.getBlue() + blue > 255) {
+			      p.setBlue(255);
+			    }
+			    else if (p.getBlue() + blue < 0) {
+			      p.setBlue(0);
+			    }
+			    else {
+			      p.setBlue(p.getBlue() + blue);
+			    }
+		}
+	}
 }
 
   
