@@ -53,11 +53,17 @@ public void convertGray() {
 //Convert image to luminance grayscale (Christina)
 public void lumGray() {
 	//an image is not an array of pixels, you can't traverse it like this
-  for (Pixel p : image) {
-    int average = (p.getRed() * 0.299 + p.getBlue() * .114 + p.getGreen() * .587);
-    p.setRed(average);
-    p.setGreen(average);
-    p.setBlue(average);
+
+  int width = image.getWidth();
+  int height = image.getHeight();
+  for(int w = 0; w <  width; w++) {
+		for(int h = 0; h < height; h++) {
+			Pixel p = image.getPixel(w, h);
+			int average = (int)(p.getRed() * 0.299 + p.getBlue() * .114 + p.getGreen() * .587);
+		    p.setRed(average);
+		    p.setGreen(average);
+		    p.setBlue(average);
+	}
   }
 }
   
