@@ -73,13 +73,25 @@ public void lumGray() {
 * Convert to sepia (Isha)
 */
 // Darken/brighten image (Felicia)
-public void darken(int factor) {
-
-}
-
-public void brighten(int factor) {
-
-}
+public APImage darken(int factor) {
+        APImage darkenedImage = new APImage(image.getWidth(), image.getHeight());
+        for(int i = 0; i < darkenedImage.length; i++) {
+            for(int j = 0; j < darkenedImage[0].length; j++) {
+                darkenedImage[i][j] = new Pixel(image[i][j].getRed()-factor,image[i][j].getGreen()-factor, image[i][j].getBlue()-factor);
+            }
+        }
+        return darkenedImage;
+    }
+    
+    public APImage brighten(int factor) {
+        APImage brightenedImage = new APImage(image.getWidth(), image.getHeight());
+        for(int i = 0; i < brightenedImage.length; i++) {
+            for(int j = 0; j < brightenedImage[0].length; j++) {
+                brightenedImage[i][j] = new Pixel(image[i][j].getRed()+factor,image[i][j].getGreen()+factor, image[i][j].getBlue()+factor);
+            }
+        }
+        return brightenedImage;
+    }
 	
 //Do color filtering (Christina)
 public void colorFilter (int red, int green, int blue) {
