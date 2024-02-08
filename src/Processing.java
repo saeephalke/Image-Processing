@@ -74,23 +74,29 @@ public void lumGray() {
 */
 // Darken/brighten image (Felicia)
 public APImage darken(int factor) {
-        APImage darkenedImage = new APImage(image.getWidth(), image.getHeight());
-        for(int i = 0; i < darkenedImage.length; i++) {
-            for(int j = 0; j < darkenedImage[0].length; j++) {
-                darkenedImage[i][j] = new Pixel(image[i][j].getRed()-factor,image[i][j].getGreen()-factor, image[i][j].getBlue()-factor);
-            }
+	APImage ret = image.clone();
+        for(Pixel p: ret) {
+        	int darkRed = p.getRed()-factor;
+        	int darkGreen = p.getGreen()-factor;
+        	int darkBlue = p.getBlue()-factor;
+            	p.setRed(darkRed);
+        	p.setGreen(darkGreen);
+        	p.setBlue(darkBlue);
         }
-        return darkenedImage;
+        return ret;
     }
-    
+   
     public APImage brighten(int factor) {
-        APImage brightenedImage = new APImage(image.getWidth(), image.getHeight());
-        for(int i = 0; i < brightenedImage.length; i++) {
-            for(int j = 0; j < brightenedImage[0].length; j++) {
-                brightenedImage[i][j] = new Pixel(image[i][j].getRed()+factor,image[i][j].getGreen()+factor, image[i][j].getBlue()+factor);
-            }
+    	APImage ret = image.clone();
+        for(Pixel p: ret) {
+        	int brightRed = p.getRed()+factor;
+        	int brightGreen = p.getGreen()+factor;
+        	int brightBlue = p.getBlue()+factor;
+        	p.setRed(brightRed);
+        	p.setGreen(brightGreen);
+        	p.setBlue(brightBlue);
         }
-        return brightenedImage;
+        return ret;
     }
 	
 //Do color filtering (Christina)
