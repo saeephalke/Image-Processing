@@ -11,6 +11,10 @@ public Processing(String s) {
   Menu gettingImage = new Menu(s);
   image = gettingImage.giveImage();
 }
+
+public APImage getImage() {
+	return image;
+}
 /**
 * Can use any image
 */

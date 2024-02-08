@@ -4,7 +4,9 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Processing processer = new Processing();
+		APImage original = processer.getImage();
 		APImage image = processer.blur();
+		original.draw();
 		image.draw();
 
 	}
