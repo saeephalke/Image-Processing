@@ -69,8 +69,16 @@ public void lumGray() {
   
 /* Rotate left 90, right 90, 180 (Isha)
 * Convert to sepia (Isha)
-* Darken/brighten image (Felicia)
 */
+// Darken/brighten image (Felicia)
+public void darken(int factor) {
+
+}
+
+public void brighten(int factor) {
+
+}
+	
 //Do color filtering (Christina)
 public void colorFilter (int red, int green, int blue) {
 	int width = image.getWidth();
