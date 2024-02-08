@@ -121,7 +121,35 @@ public void colorFilter (int red, int green, int blue) {
 
   
 /* Posterize image  (Saee)
-* Convert to photographic negative (Saee)
+ */
+public APImage posterizeImage() {
+	int width = image.getWidth();
+	int height = image.getHeight();
+	APImage i = new APImage(width, height);
+	
+	int randomRedOne = (int)(Math.random()*256);
+	int randomGreenOne = (int)(Math.random()*256);
+	int randomBlueOne = (int)(Math.random()*256);
+	
+	int randomRedTwo = (int)(Math.random()*256);
+	int randomGreenTwo = (int)(Math.random()*256);
+	int randomBlueTwo = (int)(Math.random()*256);
+	
+	for(int w = 0; w < width; w++) {
+		for(int h = 0; h < height; h++) {
+			Pixel p = image.getPixel(w, h);
+			if(p.getBlue() <= 100 && p.getRed() <= 100 && p.getGreen() <= 100) {
+				i.setPixel(w, h, new Pixel(randomRedOne, randomGreenOne, randomBlueOne));
+			} else {
+				i.setPixel(w, h, new Pixel(randomRedTwo, randomGreenTwo, randomBlueTwo));
+			}
+		}
+	}
+	return i;
+	
+}
+
+/* Convert to photographic negative (Saee)
 * Sharpen (Saee)
 * Blur (Saee)
 * Shrink (Felicia)
