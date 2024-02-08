@@ -41,13 +41,15 @@ public void convertBW() {
 /*
 * Convert image to grayscale (Christina)
 */
-public void convertGray() {
-  for (Pixel p : image) {
+public APImage convertGray() {
+	APImage ret = image.clone();
+  for (Pixel p : ret) {
     int average = (p.getRed() + p.getBlue() + p.getGreen())/3;
     p.setRed(average);
     p.setGreen(average);
     p.setBlue(average);
   }
+  return ret;
 }
   
 //Convert image to luminance grayscale (Christina)
@@ -150,7 +152,21 @@ public APImage posterizeImage() {
 }
 
 /* Convert to photographic negative (Saee)
-* Sharpen (Saee)
+ */
+public APImage photographicNegative() {
+	APImage ret =  convertGray();
+	
+	for(Pixel p : ret) {
+		p.setRed(255 - p.getRed());
+		p.setBlue(255 - p.getBlue());
+		p.setGreen(255 - p.getGreen());
+	}
+	
+	return ret;
+	
+}
+
+/* Sharpen (Saee)
 * Blur (Saee)
 * Shrink (Felicia)
 * Enlarge (Felicia)
