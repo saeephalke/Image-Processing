@@ -167,7 +167,39 @@ public APImage photographicNegative() {
 }
 
 /* Sharpen (Saee)
-* Blur (Saee)
+ */
+//helper method for sharpen
+public APImage sharpen(int threshold, int degree) {
+	int width = image.getWidth();
+	int height = image.getHeight();
+	
+	APImage ret = new APImage(width, height);
+	
+	for(int w = 1; w < width; w++) {
+		for(int h = 0; h < height - 1; h++) {
+			Pixel curr = image.getPixel(w, h);
+			Pixel left = image.getPixel(w - 1, h);
+			Pixel bottom = image.getPixel(w, h +1);
+			
+			int currAve = (curr.getRed() + curr.getBlue() + curr.getGreen())/3;
+			int leftAve = (left.getRed() + left.getBlue() + left.getGreen())/3;
+			int bottomAve = (bottom.getRed() + bottom.getBlue() + bottom.getGreen())/3;
+			
+			Pixel changingPixel = ret.getPixel(w, h); 
+			if(Math.abs(currAve - leftAve) > threshold || Math.abs(currAve - bottomAve) > threshold) {
+				changingPixel.setRed(Math.max(0, curr.getRed() - degree));
+				changingPixel.setGreen(Math.max(0, curr.getGreen() - degree));
+				changingPixel.setBlue(Math.max(0, curr.getBlue() - degree));
+			} else {
+				changingPixel.setRed(curr.getRed());
+				changingPixel.setGreen(curr.getGreen());
+				changingPixel.setBlue(curr.getBlue());
+			}
+		}
+	}
+	return ret;
+}
+/* Blur (Saee)
 * Shrink (Felicia)
 * Enlarge (Felicia)
 * VIDEO EDITING (Together)
