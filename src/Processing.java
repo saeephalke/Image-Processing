@@ -200,7 +200,61 @@ public APImage sharpen(int threshold, int degree) {
 	return ret;
 }
 /* Blur (Saee)
-* Shrink (Felicia)
+ */
+public APImage blur() {
+	int width = image.getWidth();
+	int height = image.getHeight();
+	APImage ret = new APImage(width, height);
+	
+	for(int w = 0; w < width; w++) {
+		for(int h = 0; h < height; h++) {
+			int sumRed = 0;
+			int sumGreen = 0;
+			int sumBlue = 0;
+			int pixelsAccounted = 0;
+			
+			if(w > 0) {
+				sumRed += image.getPixel(w-1, h).getRed();
+				sumBlue += image.getPixel(w-1, h).getBlue();
+				sumGreen += image.getPixel(w-1, h).getGreen();
+				pixelsAccounted++;
+			}
+			
+			if(w < width-1) {
+				sumRed += image.getPixel(w+1, h).getRed();
+				sumBlue += image.getPixel(w+1, h).getBlue();
+				sumGreen += image.getPixel(w+1, h).getGreen();
+				pixelsAccounted++;
+			}
+			
+			if(h > 0) {
+				sumRed += image.getPixel(w, h-1).getRed();
+				sumBlue += image.getPixel(w, h-1).getBlue();
+				sumGreen += image.getPixel(w, h-1).getGreen();
+				pixelsAccounted++;
+			}
+			
+			if(h < height-1) {
+				sumRed += image.getPixel(w, h+1).getRed();
+				sumBlue += image.getPixel(w, h+1).getBlue();
+				sumGreen += image.getPixel(w, h+1).getGreen();
+				pixelsAccounted++;
+			}
+			
+			int redAverage = sumRed/pixelsAccounted;
+			int greenAverage = sumGreen/pixelsAccounted;
+			int blueAverage = sumBlue/pixelsAccounted;
+			
+			Pixel curr = ret.getPixel(w, h);
+			curr.setRed(redAverage);
+			curr.setGreen(greenAverage);
+			curr.setBlue(blueAverage);
+		}
+	}
+	
+	return ret;
+}
+/* Shrink (Felicia)
 * Enlarge (Felicia)
 * VIDEO EDITING (Together)
 * SLIDESSSSS (Together)
