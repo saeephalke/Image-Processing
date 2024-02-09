@@ -5,7 +5,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		Processing processer = new Processing();
 		APImage original = processer.getImage();
-		APImage image = processer.colorFilter(100, 50, 50);
+		APImage image = processer.brighten(100);
 		//original.draw();
 		image.draw();
 
