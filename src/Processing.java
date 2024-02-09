@@ -290,15 +290,12 @@ public APImage blur() {
 }
 // Shrink (Felicia)
 public APImage shrink(int factor) {
-	APImage originalImage = image.clone();
-	int originalWidth = originalImage.getWidth();
-	int originalHeight = originalImage.getHeight();
-	int shrunkenWidth = (int)(originalWidth*(double) (1/factor));
-	int shrunkenHeight = (int)(originalHeight*(double) (1/factor));
+	int shrunkenWidth = (image.getWidth()/factor);
+	int shrunkenHeight = (image.getHeight()/factor);
 	APImage shrunkenImage = new APImage(shrunkenWidth, shrunkenHeight);
-	for(int i = 0; i < shrunkenHeight; i += factor) {
-		for(int j = 0; j < shrunkenWidth; j++) {
-			shrunkenImage.setPixel(i, j, originalImage.getPixel(i*factor, j*factor));
+	for(int i = 0; i < shrunkenWidth; i++) {
+		for(int j = 0; j < shrunkenHeight; j++) {
+			shrunkenImage.setPixel(i, j, image.getPixel(i*factor, j*factor));
 		}
 	}
 	
@@ -307,20 +304,12 @@ public APImage shrink(int factor) {
 
 //Enlarge (Felicia)
 public APImage enlarge(int factor) {
-	APImage originalImage = image.clone();
-	int originalWidth = originalImage.getWidth();
-	int originalHeight = originalImage.getHeight();
-	int enlargedWidth = originalWidth*factor;
-	int enlargedHeight = originalHeight*factor;
+	int enlargedWidth = (image.getWidth()*factor);
+	int enlargedHeight = (image.getHeight()*factor);
 	APImage enlargedImage = new APImage(enlargedWidth, enlargedHeight);
-	for(int i = 0; i < originalHeight; i++) {
-		for(int j = 0; j < originalWidth; j++) {
-			for(int l = i; l < (i+1)*factor-1; l++) {
-				for(int k = j; k < (i+1)*factor-1; k++) {
-					enlargedImage.setPixel(l,  k, originalImage.getPixel(i, j));
-				}
-			}
-			
+	for(int i = 0; i < enlargedWidth; i++) {
+		for(int j = 0; j < enlargedHeight; j++) {
+			enlargedImage.setPixel(i, j, image.getPixel(i/factor, j/factor));
 		}
 	}
 	
