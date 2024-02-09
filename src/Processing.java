@@ -27,7 +27,7 @@ public APImage convertBW() {
     int average = (little.getRed() + little.getBlue() + little.getGreen())/3;
     if (average < 128) {
       //set the same Pixel to black
-      little.setPixel(0);
+      little.setRed(0);
       little.setGreen(0);
       little.setBlue(0);
     }
@@ -38,7 +38,7 @@ public APImage convertBW() {
       little.setBlue(255);
     }
   }
-  image.draw();
+  return newImage;
 
 }
 
@@ -58,7 +58,7 @@ public APImage convertGray() {
 }
   
 //Convert image to luminance grayscale (Christina)
-public void lumGray() {
+public APImage lumGray() {
 	//an image is not an array of pixels, you can't traverse it like this
   APImage ret = image.clone();
   int width = ret.getWidth();
@@ -72,6 +72,7 @@ public void lumGray() {
 		    p.setBlue(average);
 	}
   }
+  return ret;
 }
   
 /* Rotate left 90, right 90, 180 (Isha)
@@ -105,7 +106,7 @@ public APImage darken(int factor) {
     }
 	
 //Do color filtering (Christina)
-public void colorFilter (int red, int green, int blue) {
+public APImage colorFilter (int red, int green, int blue) {
 	APImage ret = image.clone();
 	int width = ret.getWidth();
 	int height = ret.getHeight();
@@ -143,6 +144,7 @@ public void colorFilter (int red, int green, int blue) {
 			    }
 		}
 	}
+	return ret;
 }
 
   
@@ -288,7 +290,7 @@ public APImage shrink(int factor) {
 	APImage shrunkenImage = new APImage(shrunkenWidth, shrunkenHeight);
 	for(int i = 0; i < shrunkenHeight; i += factor) {
 		for(int j = 0; j < shrunkenWidth; j++) {
-			shrunkenImage[i][j] = originalImage[i*factor][j*factor];
+			shrunkenImage.setPixel(i, j, originalImage.getPixel(i*factor, j*factor));
 		}
 	}
 	
@@ -307,7 +309,7 @@ public APImage enlarge(int factor) {
 		for(int j = 0; j < originalWidth; j++) {
 			for(int l = i; l < (i+1)*factor-1; l++) {
 				for(int k = j; k < (i+1)*factor-1; k++) {
-					enlargedImage[l][k] = originalImage[i][j];
+					enlargedImage.setPixel(l,  k, originalImage.getPixel(i, j));
 				}
 			}
 			
