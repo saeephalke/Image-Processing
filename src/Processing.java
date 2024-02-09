@@ -276,7 +276,23 @@ public APImage blur() {
 	
 	return ret;
 }
-/* Shrink (Felicia)
+// Shrink (Felicia)
+public APImage shrink(int factor) {
+	APImage originalImage = image.clone();
+	int originalWidth = originalImage.getWidth();
+	int originalHeight = originalImage.getHeight();
+	int shrunkenWidth = (int)(originalWidth*(double) (1/factor));
+	int shrunkenHeight = (int)(originalHeight*(double) (1/factor));
+	APImage shrunkenImage = new APImage(shrunkenWidth, shrunkenHeight);
+	for(int i = 0; i < shrunkenHeight; i += factor) {
+		for(int j = 0; j < shrunkenWidth; j++) {
+			shrunkenImage[i][j] = originalImage[i*factor][j*factor];
+		}
+	}
+	
+	return shrunkenImage;
+}
+/**
 * Enlarge (Felicia)
 * VIDEO EDITING (Together)
 * SLIDESSSSS (Together)
