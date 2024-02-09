@@ -294,8 +294,29 @@ public APImage shrink(int factor) {
 	
 	return shrunkenImage;
 }
-/**
-* Enlarge (Felicia)
+
+//Enlarge (Felicia)
+public APImage enlarge(int factor) {
+	APImage originalImage = image.clone();
+	int originalWidth = originalImage.getWidth();
+	int originalHeight = originalImage.getHeight();
+	int enlargedWidth = originalWidth*factor;
+	int enlargedHeight = originalHeight*factor;
+	APImage enlargedImage = new APImage(enlargedWidth, enlargedHeight);
+	for(int i = 0; i < originalHeight; i++) {
+		for(int j = 0; j < originalWidth; j++) {
+			for(int l = i; l < (i+1)*factor-1; l++) {
+				for(int k = j; k < (i+1)*factor-1; k++) {
+					enlargedImage[l][k] = originalImage[i][j];
+				}
+			}
+			
+		}
+	}
+	
+	return enlargedImage;
+}
+/*
 * VIDEO EDITING (Together)
 * SLIDESSSSS (Together)
 */
