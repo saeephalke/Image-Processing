@@ -19,14 +19,15 @@ public APImage getImage() {
 * Can use any image
 */
 //Convert an image to BW (Christina)
-public void convertBW() {
+public APImage convertBW() {
   image.draw();
-  for (Pixel little : image) {
+  APImage newImage = image.clone();
+  for (Pixel little : newImage) {
     //take the average of the colors
     int average = (little.getRed() + little.getBlue() + little.getGreen())/3;
     if (average < 128) {
-      //set it to black
-      little.setRed(0);
+      //set the same Pixel to black
+      little.setPixel(0);
       little.setGreen(0);
       little.setBlue(0);
     }
@@ -46,7 +47,7 @@ public void convertBW() {
 * Convert image to grayscale (Christina)
 */
 public APImage convertGray() {
-	APImage ret = image.clone();
+  APImage ret = image.clone();
   for (Pixel p : ret) {
     int average = (p.getRed() + p.getBlue() + p.getGreen())/3;
     p.setRed(average);
@@ -59,12 +60,12 @@ public APImage convertGray() {
 //Convert image to luminance grayscale (Christina)
 public void lumGray() {
 	//an image is not an array of pixels, you can't traverse it like this
-
-  int width = image.getWidth();
-  int height = image.getHeight();
-  for(int w = 0; w <  width; w++) {
+  APImage ret = image.clone();
+  int width = ret.getWidth();
+  int height = ret.getHeight();
+  for(int w = 0; w < width; w++) {
 		for(int h = 0; h < height; h++) {
-			Pixel p = image.getPixel(w, h);
+			Pixel p = ret.getPixel(w, h);
 			int average = (int)(p.getRed() * 0.299 + p.getBlue() * .114 + p.getGreen() * .587);
 		    p.setRed(average);
 		    p.setGreen(average);
@@ -105,12 +106,13 @@ public APImage darken(int factor) {
 	
 //Do color filtering (Christina)
 public void colorFilter (int red, int green, int blue) {
-	int width = image.getWidth();
-	int height = image.getHeight();
+	APImage ret = image.clone();
+	int width = ret.getWidth();
+	int height = ret.getHeight();
 	
 	for(int w = 0; w <  width; w++) {
 		for(int h = 0; h < height; h++) {
-			Pixel p = image.getPixel(w, h);
+			Pixel p = ret.getPixel(w, h);
 			if (p.getRed() + red > 255) {
 			      p.setRed(255);
 			    }
