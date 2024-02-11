@@ -1,4 +1,5 @@
 import images.*;
+import java.util.*;
 import java.util.Scanner;
 public class Menu {
 	private String imageFile;
@@ -9,15 +10,27 @@ public class Menu {
 		imageFile = "smokey.jpg";
 	}
 	
-	public Menu(String s) {
-		Scanner sc = new Scanner(System.in);
-		while(!isValid(s)) {
-			System.out.println("Try another File Name");
-			s = sc.nextLine();
-			
-		}
-		imageFile = s;
+	
+	public void setImageFile() {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Please choose an index, by default the file you'll use is smokey.jpg");
+		System.out.println("If you enter an invalid number, you'll be using smokey.jpg");
+		System.out.println(printFileNames());
 		
+		System.out.print("Enter index here: ");
+		String index = s.nextLine();
+		
+		try{
+			int i = Integer.parseInt(index);
+			if(i >= 0 && i < availableImages.length) {
+				System.out.println("Choosing " + availableImages[i]);
+				imageFile = availableImages[i];
+			} else {
+				System.out.println("This isn't a valid number, so we'll just use smokey.jpg");
+			}
+		} catch (Exception e) {
+			System.out.println("This isn't a number, so we'll just use smokey.jpg");
+		}
 	}
 	
 	public APImage giveImage() {
@@ -31,5 +44,15 @@ public class Menu {
 			}
 		}
 		return false;
+	}
+	
+	public String printFileNames() {
+		String s = "";
+		int index = 0;
+		for(String name : availableImages) {
+			s += index + ". " + name + "/n";
+			index++;
+		}
+		return s;
 	}
 }
