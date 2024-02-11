@@ -77,30 +77,31 @@ public APImage lumGray() {
   
 //Rotate left 90, right 90, 180 (Isha)
 public APImage roateLR() {
-		    int newheight = getWidth();
-		    int newwidth = getHeight();
-		    int[][] newpixels = new int[newheight][newwidth];
+	APImage ret = image.clone();
+	int newheight = getWidth();
+        int newwidth = getHeight();
+	int[][] newpixels = new int[newheight][newwidth];
 		    
-		    for (int i = 0; i < height; i++) {
-		        for (int j = 0; j < width; j++) {               
-		            newpixels[j][height-1-i] = pixels[i][j];            
-		        }
-		    }
-		    for (int i = 0; i < height; i++) {
-		        for (int j = 0; j < width; j++) {               
-		            newpixels[j][width-1-i] = pixels[i][j];            
-		        }
-		    }
+	for (int i = 0; i < height; i++) {
+		 for (int j = 0; j < width; j++) {               
+		         newpixels[j][height-1-i] = pixels[i][j];            
+		 }
+	 }
+	for (int i = 0; i < height; i++) {
+		 for (int j = 0; j < width; j++) {               
+		         newpixels[j][width-1-i] = pixels[i][j];            
+		 }
+	}
+}
 
-		public APImage rotate() {
-			for (int i = N - 1; i >= 0; i--) {
-	            for (int j = N - 1; j >= 0; j--)
-	                System.out.print(mat[i][j] + " ");
-	 
-	            System.out.println();
-	        	}
-	    	}
+public APImage rotate() {
+	for (int i = N - 1; i >= 0; i--) {
+	  for (int j = N - 1; j >= 0; j--) {
+		 System.out.print(mat[i][j] + " ");
+		 System.out.println();
 		}
+	    }
+}
 	
 // Convert to sepia (Isha)
 	
