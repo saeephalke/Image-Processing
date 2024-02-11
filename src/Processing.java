@@ -76,7 +76,7 @@ public APImage lumGray() {
 }
   
 //Rotate left 90, right 90, 180 (Isha)
-public APImage rotateR() {
+public APImage rotateL() {
 	//APImage ret = image.clone();
 	int newheight = image.getWidth();
         int newwidth = image.getHeight();
@@ -90,7 +90,7 @@ public APImage rotateR() {
 	return ret;
 }
 
-public APImage rotateL() { 
+public APImage rotateR() { 
 	int newheight = image.getWidth();
         int newwidth = image.getHeight();
         APImage ret = new APImage(newwidth, newheight);
