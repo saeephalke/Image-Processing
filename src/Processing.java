@@ -107,6 +107,22 @@ public APImage rotate() {
 }
 	
 // Convert to sepia (Isha)
+public APImage sepia() {
+	APImage ret = convertGray();
+	for(Pixel p: ret) {
+		if(red < 63) {
+		  red = (int)(red * 1.1);
+			blue = (int)(blue * 0.9);
+		} else if (red < 192) {
+		   red = (int)(red * 1.15);
+		   blue = (int)(blue * 0.85);
+		} else {
+		   red = Math.min(int(red * 1.08), 255);
+		   blue = (int)(blue * 0.93);
+		}
+	}
+	return ret;
+}
 	
 // Darken/brighten image (Felicia)
 public APImage darken(int factor) {
