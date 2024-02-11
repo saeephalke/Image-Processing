@@ -76,25 +76,29 @@ public APImage lumGray() {
 }
   
 //Rotate left 90, right 90, 180 (Isha)
-public APImage roateLR() {
-	APImage ret = image.clone();
-	int newheight = getWidth();
-        int newwidth = getHeight();
-	int[][] newpixels = new int[newheight][newwidth];
+public APImage rotateLR() {
+	//APImage ret = image.clone();
+	int newheight = image.getWidth();
+        int newwidth = image.getHeight();
+        APImage ret = new APImage(newwidth, newheight);
 		    
-	for (int i = 0; i < height; i++) {
-		 for (int j = 0; j < width; j++) {               
-		         newpixels[j][height-1-i] = pixels[i][j];            
+	for (int i = 0; i < ret.getHeight(); i++) {
+		 for (int j = 0; j < ret.getWidth(); j++) {               
+		         ret.setPixel(j, ret.getHeight()-1-i, image.getPixel(i, j));        
 		 }
-		return ret;
 	 }
+	return ret;
+	/*
 	for (int i = 0; i < height; i++) {
 		 for (int j = 0; j < width; j++) {               
 		         newpixels[j][width-1-i] = pixels[i][j];            
 		 }
 		return ret;
 	}
+	*/
 }
+	
+
 
 public APImage rotate() {
 	for (int i = N - 1; i >= 0; i--) {
@@ -110,15 +114,15 @@ public APImage rotate() {
 public APImage sepia() {
 	APImage ret = convertGray();
 	for(Pixel p: ret) {
-		if(red < 63) {
-		  red = (int)(red * 1.1);
-			blue = (int)(blue * 0.9);
-		} else if (red < 192) {
-		   red = (int)(red * 1.15);
-		   blue = (int)(blue * 0.85);
+		if(p.getRed() < 63) {
+		  p.setRed((int)(p.getRed() * 1.1));
+		  p.setBlue((int)(p.getBlue() * 0.9));
+		} else if (p.getRed() < 192) {
+		  p.setRed( (int)(p.getRed() * 1.15));
+		   p.setBlue((int)(p.getBlue() * 0.85));
 		} else {
-		   red = Math.min(int(red * 1.08), 255);
-		   blue = (int)(blue * 0.93);
+		   p.setRed(Math.min((int)(p.getRed() * 1.08), 255));
+		   p.setBlue((int)(p.getBlue() * 0.93));
 		}
 	}
 	return ret;
