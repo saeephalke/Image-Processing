@@ -108,9 +108,9 @@ public APImage rotateR() {
 
 public APImage rotateFlip() {
         APImage ret = new APImage(image.getWidth(), image.getHeight());
-	for (int i = ret.geWidth() - 1; i >= 0; i--) {
+	for (int i = ret.getWidth() - 1; i >= 0; i--) {
 		 for (int j = ret.getHeight()-1; j >= 0; j--) {               
-		         ret.setPixel(i, j, image.getPixel(image.getWidth()-i, image.getHeight()-j));         
+		         ret.setPixel(i, j, image.getPixel(image.getWidth()-i-1, image.getHeight()-j-1));         
 		 }
 	}
 	return ret;
