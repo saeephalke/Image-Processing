@@ -106,14 +106,14 @@ public APImage rotateR() {
 	
 
 
-public APImage rotate() {
-	for (int i = N - 1; i >= 0; i--) {
-	  for (int j = N - 1; j >= 0; j--) {
-		 System.out.print(mat[i][j] + " ");
-		 System.out.println();
-		}
-		return ret;
-	    }
+public APImage rotateFlip() {
+        APImage ret = new APImage(image.getWidth(), image.getHeight());
+	for (int i = ret.geWidth() - 1; i >= 0; i--) {
+		 for (int j = ret.getHeight()-1; j >= 0; j--) {               
+		         ret.setPixel(i, j, image.getPixel(image.getWidth()-i, image.getHeight()-j));         
+		 }
+	}
+	return ret;
 }
 	
 // Convert to sepia (Isha)
