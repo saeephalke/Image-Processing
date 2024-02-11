@@ -5,7 +5,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		Processing processer = new Processing();
 		APImage original = processer.getImage();
-		APImage image = processer.rotateLR();
+		APImage image = processer.rotateR();
 		//original.draw();
 		image.draw();
 

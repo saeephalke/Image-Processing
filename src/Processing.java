@@ -88,7 +88,8 @@ public APImage rotateR() {
 		 }
 	 }
 	return ret;
-	
+}
+
 public APImage rotateL() { 
 	int newheight = image.getWidth();
         int newwidth = image.getHeight();
@@ -96,10 +97,10 @@ public APImage rotateL() {
 	
 	for (int i = 0; i < ret.getHeight(); i++) {
 		 for (int j = 0; j < ret.getWidth(); j++) {               
-		        ret.setPixels(j, ret.getWidth()-1-i, image.getPixels(i, j));            
+		        ret.setPixel(ret.getWidth() - j - 1, i, image.getPixel(i, j));            
 		 }
-		return ret;
 	}
+	return ret;
 	
 }
 	
