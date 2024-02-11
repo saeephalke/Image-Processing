@@ -7,14 +7,7 @@ public class Main {
 		menu.setImageFile();
 		Scanner s = new Scanner(System.in);
 		
-		String sentinel = "go";		
-		while(!sentinel.equals("stop")) {
-			menu.showMenu();
-			
-			System.out.println("Would you like to stop, type \"stop\", otherwise type something else");
-			sentinel = s.nextLine();
-		}
-		System.out.println("Thanks for using our program!");
+		menu.showMenu();
 
 	}
 }
