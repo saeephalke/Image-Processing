@@ -2,14 +2,8 @@ import images.*;
 public class Processing {
 private APImage image;
 
-public Processing() {
-  Menu gettingImage = new Menu();
-  image = gettingImage.giveImage();
-}
-
 public Processing(String s) {
-  Menu gettingImage = new Menu(s);
-  image = gettingImage.giveImage();
+  image = new APImage(s);
 }
 
 public APImage getImage() {
@@ -214,7 +208,7 @@ public APImage colorFilter (int red, int green, int blue) {
   
 /* Posterize image  (Saee)
  */
-public APImage posterizeImage() {
+public APImage posterize() {
 	int width = image.getWidth();
 	int height = image.getHeight();
 	APImage i = new APImage(width, height);
