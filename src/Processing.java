@@ -86,11 +86,13 @@ public APImage roateLR() {
 		 for (int j = 0; j < width; j++) {               
 		         newpixels[j][height-1-i] = pixels[i][j];            
 		 }
+		return ret;
 	 }
 	for (int i = 0; i < height; i++) {
 		 for (int j = 0; j < width; j++) {               
 		         newpixels[j][width-1-i] = pixels[i][j];            
 		 }
+		return ret;
 	}
 }
 
@@ -100,6 +102,7 @@ public APImage rotate() {
 		 System.out.print(mat[i][j] + " ");
 		 System.out.println();
 		}
+		return ret;
 	    }
 }
 	
