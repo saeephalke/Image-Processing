@@ -1,4 +1,8 @@
 import images.*;
+
+/**
+ * uses main method to run methods from the Menu class
+ */
 import java.util.*;
 public class Main {
 	

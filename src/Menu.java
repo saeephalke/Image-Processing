@@ -1,6 +1,10 @@
 import images.*;
 import java.util.*;
 import java.util.Scanner;
+
+/**
+ * Handles interactions between the user and the Processing class
+ */
 public class Menu {
 	private String imageFile;
 	private final static String[] availableImages = {"smokey.jpg", "swan.jpg", "seagull.jpg", "redMotorcycle.jpg", 

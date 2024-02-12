@@ -1,4 +1,8 @@
 import images.*;
+
+/**
+ * Processes an image provided by the user
+ */
 public class Processing {
 private APImage image;
 
