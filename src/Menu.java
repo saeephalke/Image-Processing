@@ -8,10 +8,16 @@ public class Menu {
 	private final static String[] availableFunctions = {"View Original", "Black and White", "Grayscale", "Luminance Grayscale", "Rotate Right", "Rotate Left", "Rotate 180", "Sepia",
 			"Darken", "Brighten", "Color Filtering", "Posterize", "Photographic Negative", "Sharpening", "Blurring", "Shrinking", "Enlargen"};
 	
+	/**
+	 * creates a Menu object, imageFile is always initially set to smokey.jpg
+	 */
 	public Menu() {
 		imageFile = "smokey.jpg";
 	}
 	
+	/**
+	 * method sets the image file based on what index user chooses based on what's available in the availableImages instance variable
+	 */
 	
 	public void setImageFile() {
 		Scanner s = new Scanner(System.in);
@@ -34,6 +40,11 @@ public class Menu {
 			System.out.println("This isn't a number, so we'll just use smokey.jpg");
 		}
 	}
+	
+	/**
+	 * method runs a sentinel while loop that shows menu options of image processing, user can choose indexes avaiable in the availableFunctions list
+	 * to process images, loop stops when the user types "stop"
+	 */
 	
 	public void showMenu() {
 		Processing p = new Processing(imageFile);
@@ -209,7 +220,11 @@ public class Menu {
 
 	}
 	
-	
+	/**
+	 * private helper method used to print a menu with available options
+	 * @param actions - list of Strings with available options to a user to choose
+	 * @return - a generated menu to print
+	 */
 	
 	private String printAvailableActions(String[] actions) {
 		String s = "";

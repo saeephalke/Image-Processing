@@ -2,15 +2,25 @@ import images.*;
 public class Processing {
 private APImage image;
 
+
+/**
+ * constructor to create a Processing object by initializing processing image
+ * @param s file name to access the image file
+ */
 public Processing(String s) {
   image = new APImage(s);
 }
 
+/**
+ * returns the image instance variable
+ * @return APImage image instance variable
+ */
 public APImage getImage() {
 	return image;
 }
 /**
-* Can use any image
+ * converts the image to black and white
+ * @return the black and white image
 */
 //Convert an image to BW (Christina)
 public APImage convertBW() {
@@ -37,8 +47,9 @@ public APImage convertBW() {
 }
 
   
-/*
-* Convert image to grayscale (Christina)
+/**
+ * converts the image to grayscale
+ * @return the grayscale image
 */
 public APImage convertGray() {
   APImage ret = image.clone();
@@ -50,7 +61,11 @@ public APImage convertGray() {
   }
   return ret;
 }
-  
+
+/**
+ * converts the image to luminance grayscale
+ * @return the luminance grayscale image
+*/
 //Convert image to luminance grayscale (Christina)
 public APImage lumGray() {
 	//an image is not an array of pixels, you can't traverse it like this
@@ -69,6 +84,10 @@ public APImage lumGray() {
   return ret;
 }
   
+/**
+ * rotates the image left by 90 degrees
+ * @return the rotated left image
+*/
 //Rotate left 90, right 90, 180 (Isha)
 public APImage rotateL() {
 	//APImage ret = image.clone();
@@ -84,6 +103,10 @@ public APImage rotateL() {
 	return ret;
 }
 
+/**
+ * rotates the image right by 90 degrees
+ * @return the rotated right image
+*/
 public APImage rotateR() { 
 	int newheight = image.getWidth();
         int newwidth = image.getHeight();
@@ -99,7 +122,10 @@ public APImage rotateR() {
 }
 	
 
-
+/**
+ * flip the image 180 degrees
+ * @return the flipped image
+*/
 public APImage rotateFlip() {
         APImage ret = new APImage(image.getWidth(), image.getHeight());
 	for (int i = ret.getWidth() - 1; i >= 0; i--) {
@@ -109,7 +135,11 @@ public APImage rotateFlip() {
 	}
 	return ret;
 }
-	
+
+/**
+ * apply a sepia effect to the image
+ * @return the sepia image
+*/
 // Convert to sepia (Isha)
 public APImage sepia() {
 	APImage ret = convertGray();
@@ -128,6 +158,11 @@ public APImage sepia() {
 	return ret;
 }
 	
+/**
+ * darkens the image by a factor
+ * @param factor - the darkening factor
+ * @return the darkened image
+*/
 // Darken/brighten image (Felicia)
 public APImage darken(int factor) {
         APImage ret = image.clone();
@@ -146,6 +181,11 @@ public APImage darken(int factor) {
         return ret;
 }
    
+/**
+ * brightens the image by a factor
+ * @param factor - the brightening factor
+ * @return the brightened image
+*/
 public APImage brighten(int factor) {
     APImage ret = image.clone();
     //ret.draw();
@@ -162,7 +202,14 @@ public APImage brighten(int factor) {
     }
     return ret;
 }
-	
+
+/**
+ * filter the image by one or more RGB values
+ * @param red - red RGB factor
+ * @param green - green RGB factor
+ * @param blue - blue RGB factor
+ * @return the color filtered image
+*/	
 //Do color filtering (Christina)
 public APImage colorFilter (int red, int green, int blue) {
 	APImage ret = image.clone();
@@ -205,7 +252,11 @@ public APImage colorFilter (int red, int green, int blue) {
 	return ret;
 }
 
-  
+
+/**
+ * posterizes image
+ * @return the posterized image
+*/
 /* Posterize image  (Saee)
  */
 public APImage posterize() {
@@ -235,6 +286,10 @@ public APImage posterize() {
 	
 }
 
+/**
+ * converts the image to photographic negative
+ * @return the photographic negative image
+*/
 /* Convert to photographic negative (Saee)
  */
 public APImage photographicNegative() {
@@ -250,9 +305,12 @@ public APImage photographicNegative() {
 	
 }
 
+/**
+ * sharpen image
+ * @return the sharpened image
+*/
 /* Sharpen (Saee)
  */
-//helper method for sharpen
 public APImage sharpen(int threshold, int degree) {
 	int width = image.getWidth();
 	int height = image.getHeight();
@@ -283,8 +341,11 @@ public APImage sharpen(int threshold, int degree) {
 	}
 	return ret;
 }
-/* Blur (Saee)
- */
+
+/**
+ * blur image
+ * @return the blurred image
+*/
 public APImage blur() {
 	int width = image.getWidth();
 	int height = image.getHeight();
@@ -338,7 +399,13 @@ public APImage blur() {
 	
 	return ret;
 }
-// Shrink (Felicia)
+
+/**
+ * shrinks the image by a factor
+ * @param factor - the shrinking factor
+ * @return the shrunken image
+*/
+//Shrink (Felicia)
 public APImage shrink(int factor) {
 	int shrunkenWidth = (image.getWidth()/factor);
 	int shrunkenHeight = (image.getHeight()/factor);
@@ -352,6 +419,11 @@ public APImage shrink(int factor) {
 	return shrunkenImage;
 }
 
+/**
+ * enlarges the image by a factor
+ * @param factor - the enlarging factor
+ * @return the enlarged image
+*/
 //Enlarge (Felicia)
 public APImage enlarge(int factor) {
 	int enlargedWidth = (image.getWidth()*factor);
